@@ -7,7 +7,7 @@ include "model/taikhoan.php";
 include "model/cart.php";
 include "view/header.php";
 include "test.php";
-
+ // code bdh
 if(!isset($_SESSION['mycart'])) $_SESSION['mycart'] =[];
 
 $spnew=loadall_sanpham_home();
