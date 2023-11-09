@@ -12,15 +12,8 @@ function delete_sanpham($id){
 function loadall_sanpham_top10(){
     $sql="select * from sanpham where 1 order by luotxem desc limit 0,10";
     $listsanpham=pdo_query($sql);
-    // tuan code tinh năng a
 
-
-
-
-
-
-
-    // end
+    // dinh code
     return $listsanpham;
 }
 
