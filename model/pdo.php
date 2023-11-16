@@ -18,11 +18,15 @@ function pdo_get_connection(){
  * @throws PDOException lỗi thực thi câu lệnh
  */
 function pdo_execute($sql){
+    // hàm này để thêm sửa xóa
     $sql_args = array_slice(func_get_args(), 1);
     try{
         $conn = pdo_get_connection();
+        // connnect database
         $stmt = $conn->prepare($sql);
+        // chuẩn hóa câu lệnh sql
         $stmt->execute($sql_args);
+        // thực thi 
     }
     catch(PDOException $e){
         throw $e;
@@ -32,6 +36,7 @@ function pdo_execute($sql){
     }
 }
 function pdo_execute_return_lastInsertId($sql){
+   
     $sql_args = array_slice(func_get_args(), 1);
     try{
         $conn = pdo_get_connection();
@@ -54,12 +59,16 @@ function pdo_execute_return_lastInsertId($sql){
  * @throws PDOException lỗi thực thi câu lệnh
  */
 function pdo_query($sql){
+     // chọn dữ liệu ra 
     $sql_args = array_slice(func_get_args(), 1);
     try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $rows = $stmt->fetchAll();
+        // chọn cách trả về dữ liệu 
+        // fetch all là trả về tất cả
+        // ví dụ: lấy tất cả sản phẩm hoặc lấy tất cả danh mục
         return $rows;
     }
     catch(PDOException $e){
@@ -77,6 +86,8 @@ function pdo_query($sql){
  * @throws PDOException lỗi thực thi câu lệnh
  */
 function pdo_query_one($sql){
+    // trả về 1 bản ghi có điều kiện
+    // ví dụ : lấy tên danh mục hoặc chi tiết sản phẩm 
     $sql_args = array_slice(func_get_args(), 1);
     try{
         $conn = pdo_get_connection();
