@@ -1,4 +1,5 @@
 <?php
+// hello world
 session_start();
 include "model/pdo.php";
 include "model/danhmuc.php";
@@ -17,7 +18,9 @@ $dstop10=loadall_sanpham_top10();
 if((isset($_GET['act']))&&($_GET['act']!="")){
     $act=$_GET['act'];
     switch ($act) {
-        
+        case '/':
+            // xin chào home  page  
+            break;
         case 'sanpham':
             //SP
             if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
